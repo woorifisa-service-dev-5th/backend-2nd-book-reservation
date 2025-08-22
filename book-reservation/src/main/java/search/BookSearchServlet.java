@@ -14,8 +14,9 @@ public class BookSearchServlet extends HttpServlet {
             throws ServletException, IOException {
 
         String keyword = request.getParameter("keyword"); // 검색어
+        String criteria = request.getParameter("criteria");
         BookDao dao = new BookDao();
-        List<Book> bookList = dao.searchBooks(keyword);
+        List<Book> bookList = dao.searchBooks(keyword, criteria);
 
         request.setAttribute("bookList", bookList);
 
