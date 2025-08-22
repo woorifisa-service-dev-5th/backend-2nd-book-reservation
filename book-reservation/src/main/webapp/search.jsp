@@ -28,7 +28,7 @@
 <body>
     <h2>도서 검색</h2>
 
-    <form action="/search" method="get">
+    <form action="<%= request.getContextPath()%>/search" method="get">
         <select name="criteria" id="criteria">
             <option value="title" <%= "title".equals(request.getParameter("criteria")) ? "selected" : "" %>>제목</option>
             <option value="author" <%= "author".equals(request.getParameter("criteria")) ? "selected" : "" %>>저자</option>
@@ -40,7 +40,7 @@
     </form>
 
     <%
-        List<Book> books = (List<Book>) request.getAttribute("books");
+        List<Book> books = (List<Book>) request.getAttribute("bookList");
         if (books != null && !books.isEmpty()) {
     %>
         <h3>검색 결과 (<%= books.size() %>건)</h3>

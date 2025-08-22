@@ -15,11 +15,11 @@ public class BookSearchServlet extends HttpServlet {
 
         String keyword = request.getParameter("keyword"); // 검색어
         BookDao dao = new BookDao();
-        List<Book> bookList = dao.searchBooks(skeyword);
+        List<Book> bookList = dao.searchBooks(keyword);
 
         request.setAttribute("bookList", bookList);
 
         // 결과를 JSP로 포워딩
-        request.getRequestDispatcher("/bookSearchResult.jsp").forward(request, response);
+        request.getRequestDispatcher("/search.jsp").forward(request, response);
     }
 }

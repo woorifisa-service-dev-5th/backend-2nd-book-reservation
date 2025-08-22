@@ -73,6 +73,11 @@ public class LoginServlet extends HttpServlet {
                 out.println("<h2>로그인 성공!</h2>");
                 out.println("<p>안녕하세요, " + rs.getString("name") + "님</p>");
                 out.println("<a href='MypageServlet'>마이페이지로 이동</a>");
+                //여기에다가 검색
+                out.println("<form action='search' method='get'>");
+                out.println("<input type='submit' value='검색 페이지로 이동'>");
+                out.println("</form>");
+                
                 out.println("<form action='LogoutServlet' method='get'>");
                 out.println("<input type='submit' value='로그아웃'>");
                 out.println("</form>");
