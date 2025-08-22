@@ -54,7 +54,6 @@
                     <th>출판일</th>
                     <th>ISBN</th>
                     <th>페이지</th>
-                    <th>분류</th>
                     <th>대출 여부</th>
                     <th>이미지</th>
                 </tr>
