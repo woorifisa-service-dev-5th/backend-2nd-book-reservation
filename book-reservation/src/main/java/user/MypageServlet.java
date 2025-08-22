@@ -13,7 +13,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import util.SessionUtils;
+import util.*;
 
 @WebServlet("/MypageServlet")
 public class MypageServlet extends HttpServlet {
