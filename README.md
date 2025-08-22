@@ -27,31 +27,14 @@
   - 대출 가능 권수 증가
   - 예약 대기열 확인 후 알림 발송
 
-### 📝 예약 관리
-- 예약하기 (재고가 0일 경우)
-- 상태 흐름:
-  - `Waiting (대기중)` → `Notified (알림발송됨, 3일 유효)` → `Fulfilled (확정됨)` / `Expired (만료)` / `Cancelled (취소)`
-- 알림 처리
-  - 반납 시 맨 앞 예약자에게 알림
-  - 알림 수신 후 3일 이내 확정 가능
-  - 예약 만료 시 다음 대기자에게 자동 알림
-  - 예약 취소 가능
-
-### 📊 대출/예약 현황·이력 조회
+### 📊 대출 현황·이력 조회
 - 회원:
   - 마이페이지에서 조회
   - 대출중 / 반납완료 / 연체 탭 구분
   - 예약 대기중 / 알림발송됨 / 확정됨 / 만료 / 취소
 - 관리자:
   - 특정 도서/회원 기준 대출 상태·예약 대기열 조회
-
 ---
-
-## 🔄 시스템 배치 및 알림
-- **연체 점검** (하루 1회)
-  - 연체 도서 자동 표시 및 알림 발송
-
--
 
 ## 🖥 화면 흐름
 
@@ -64,24 +47,6 @@
   - 예약 탭: 대기중/알림발송됨(남은 시간)/만료/확정
 - **관리자 화면**
   - 반납 처리, 연체 관리, 예약 대기열 확인/조정, 알림 로그 확인
-
----
-
-## 🗂️ 데이터 모델 (예시)
-
-### User (회원)
-- `id`, `email`, `password`, `name`, `가입일자`
-
-### Book (도서)
-- `id`, `title`, `author`, `isbn`, `publisher`, `publication_date`, `total_count`, `available_count`
-
-### Loan (대출)
-- `id`, `user_id`, `book_id`, `loan_date`, `due_date`, `return_date`, `status (Active / Returned / Overdue)`
-
-### Reservation (예약)
-- `id`, `user_id`, `book_id`, `request_date`,  
-  `status (Waiting / Notified / Fulfilled / Expired / Cancelled)`,  
-  `expire_at`
 
 ---
 
@@ -98,7 +63,6 @@
 - `Fulfilled` (확정됨)
 - `Expired` (만료)
 - `Cancelled` (취소)
-
 ---
 
 ## 📖 실행 시나리오 예시
