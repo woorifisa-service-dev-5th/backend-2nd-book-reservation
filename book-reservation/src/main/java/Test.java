@@ -10,7 +10,7 @@ public class Test {
 	// 1. DBMS 서버에 접근하기 위한 설정 정보 작성
 	Properties p = new Properties();
 	
-	private static final String USER_NAME = "test1";
+	private static final String USER_NAME = "test3";
 	private static final String PASSWORD = "1234";
 	private static final String DB_URL = "jdbc:mysql://192.168.0.42:3306/";
 	private static final String DATABASE_SCHEMA = "book_reservation";
