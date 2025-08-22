@@ -1,7 +1,6 @@
 package borrow;
 
 import java.io.IOException;
-
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -21,7 +20,6 @@ public class ReturnServlet extends HttpServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws IOException {
         req.setCharacterEncoding("UTF-8");
 
-        // 필수 파라미터 확인
         final String userIdStr   = req.getParameter("userId");
         final String borrowIdStr = req.getParameter("borrowId");
         if (userIdStr == null || borrowIdStr == null) {
@@ -39,13 +37,11 @@ public class ReturnServlet extends HttpServlet {
         }
 
         try {
-            boolean ok = dao.returnBook(borrowId, userId);
+            boolean ok = dao.returnBook(borrowId, userId); // 본인 대출건 반납
             if (ok) {
-                // 성공 → PRG: 완료 메시지
-                resp.sendRedirect(req.getContextPath() + "/borrow.jsp?ret=1");
+                resp.sendRedirect(req.getContextPath() + "/MypageServlet?ret=1");
             } else {
-                // 대출건 없음 → 사유와 함께 리다이렉트
-                resp.sendRedirect(req.getContextPath() + "/borrow.jsp?ret=0&reason=notfound");
+                resp.sendRedirect(req.getContextPath() + "/MypageServlet?ret=0&reason=notfound");
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -53,7 +49,6 @@ public class ReturnServlet extends HttpServlet {
         }
     }
 
-    /** 컨텍스트 DS가 있으면 사용, 없으면 간단 DS 생성 */
     private DataSource resolveDataSource() {
         Object o = getServletContext().getAttribute("ds");
         if (o instanceof DataSource) return (DataSource) o;
@@ -62,7 +57,7 @@ public class ReturnServlet extends HttpServlet {
             "jdbc:mysql://192.168.0.42:3306/book_reservation"
           + "?useSSL=false&allowPublicKeyRetrieval=true"
           + "&useUnicode=true&characterEncoding=utf8&serverTimezone=Asia/Seoul",
-            "test1", "1234"
+            "test2", "1234" // BorrowServlet과 동일한 계정/DS 사용 권장
         );
     }
 }

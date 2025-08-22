@@ -13,8 +13,19 @@ public class Book {
     private String image;      // 이미지 URL
     private long catCode;      // 분류코드
     private boolean isBorrow; // 책이 대출중인지 여부
+    private String catName;
+    
+    
 
-    public Book() {
+    public String getCatName() {
+		return catName;
+	}
+
+	public void setCatName(String catName) {
+		this.catName = catName;
+	}
+
+	public Book() {
     	this.isBorrow = false;
     }
     
